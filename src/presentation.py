@@ -8,6 +8,9 @@ class Presentation:
         
     def getRecentStatus(self):
         df = self.ca.getCurrentUsage()
+        df['size'] = df['size']/(1024*1024)
+        df = df.rename(columns={'size':'size(MB)'})
+        df = df.round(3)
         output = StringIO()
         df.to_csv(output)
         output.seek(0)
