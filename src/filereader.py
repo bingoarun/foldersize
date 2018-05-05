@@ -41,7 +41,7 @@ class CSVReader:
         df = pandas.concat(list_)
         return df.sort_index()
 
-    def getLatest(self):
+    def getToday(self):
         start_date = end_date = datetime.date.today()
         return self.getBetweenDates(start_date, end_date)
 
@@ -49,6 +49,12 @@ class CSVReader:
         end_date = datetime.date.today()
         start_date = end_date - datetime.timedelta(days=num_days)
         return self.getBetweenDates(start_date, end_date)
+    
+    def getRecent(self):
+        #FIXME: might not work if the user execute in 00.00 to 00:15 hours
+        start_date = end_date = datetime.date.today()
+        today_df = self.getBetweenDates(start_date, end_date)
+        return today_df.loc[today_df.index.max()]
 
 
 if __name__ == "__main__":
@@ -59,8 +65,11 @@ if __name__ == "__main__":
     #end_date=datetime.datetime.strptime('2018-05-10', '%Y-%m-%d').date()
     #print reader.getBetweenDates(start_date,end_date)
 
-    # Test getLatest()
-    #print reader.getLatest()
+    # Test getToday()
+    #print reader.getToday()
 
     #Test getLastNDays
-    print reader.getLastNDays(3)
+    #print reader.getLastNDays(3)
+
+    # Test getToday()
+    #print reader.getRecent()
