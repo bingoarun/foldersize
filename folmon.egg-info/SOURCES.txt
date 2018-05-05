@@ -1,0 +1,13 @@
+README.md
+setup.py
+command/__init__.py
+command/cli.py
+command/core.py
+command/filereader.py
+command/presentation.py
+folmon.egg-info/PKG-INFO
+folmon.egg-info/SOURCES.txt
+folmon.egg-info/dependency_links.txt
+folmon.egg-info/entry_points.txt
+folmon.egg-info/requires.txt
+folmon.egg-info/top_level.txt

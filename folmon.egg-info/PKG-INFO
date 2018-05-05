@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: folmon
+Version: 1.0.0
+Summary: Utility to monitor folder size.
+Home-page: https://github.com/bingoarun/folmon
+Author: Arun prasath
+Author-email: arunprasath33@gmail.com
+License: MIT
+Description: # foldersize
+        WIP : Just a tool to monitor folder and sub-folder sizes over time. 
+        
+Keywords: Monitoring folder size
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: System :: Monitoring
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
