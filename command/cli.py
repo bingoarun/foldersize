@@ -1,3 +1,7 @@
+import click
+from presentation import Presentation
+
+
 '''
 TODO commands
 
@@ -17,6 +21,14 @@ folmon show --numofdays 10 /usage
 (show a matrix of the folder and subfolder's size for the past 10 days )
 
 '''
+
+presentation_obj = Presentation('/home/arun/Projects/bingoarun/folmon/sample-data')
+
+@click.group()
+def main():
+    pass
+
+@click.command()
 def status():
     presentation_obj.getRecentStatus()
 
