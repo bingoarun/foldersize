@@ -31,7 +31,9 @@ class CoreAnalysis:
         df_data = self.reader.getBetweenDates(start_date,end_date)
         min_df = ((df_data.loc[df_data.index.min()]).sort_values(['folder'],ascending=[True]))
         max_df = ((df_data.loc[df_data.index.max()]).sort_values(['folder'],ascending=[True]))
-        print min_df.merge(max_df.rename(columns={'size':'size_max'}),how='outer')
+        df_diff = (min_df.merge(max_df.rename(columns={'size':end_date}),how='outer')).rename(columns={'size':start_date})
+        df_diff['percentage_increase'] = (df_diff[end_date] - df_diff[start_date])/df_diff[start_date] * 100
+        print df_diff
         
         # total=int(df_data.loc[df_data['folder'] == folder,'size'].item())
         # df_data['percentage'] = (df_data['size']/total)*100
@@ -43,5 +45,5 @@ if __name__ == "__main__":
     #reader = CSVReader('/home/arun/Projects/bingoarun/folmon/sample-data')
     ca = CoreAnalysis('/home/arun/Projects/bingoarun/folmon/sample-data')
     # print ca.getCurrentUsage()
-    ca.getBetweenDates('2018-05-05','2018-05-08','/logs')
+    ca.getBetweenDates('2018-05-05','2018-05-07','/logs')
     
