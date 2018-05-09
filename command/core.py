@@ -24,13 +24,24 @@ class CoreAnalysis:
         df_recent = self.reader.getRecent()
         total=int(df_recent.loc[df_recent['folder'] == '/log','size'].item())
         df_recent['percentage'] = (df_recent['size']/total)*100
+        df_recent['size'] = df_recent['size']/(1024*1024)
         return df_recent
     
-    def getBetweenDates(self):
-        pass
+    def getBetweenDates(self,start_date,end_date,folder):
+        df_data = self.reader.getBetweenDates(start_date,end_date)
+        min_df = ((df_data.loc[df_data.index.min()]).sort_values(['folder'],ascending=[True]))
+        max_df = ((df_data.loc[df_data.index.max()]).sort_values(['folder'],ascending=[True]))
+        print min_df.merge(max_df.rename(columns={'size':'size_max'}),how='outer')
+        
+        # total=int(df_data.loc[df_data['folder'] == folder,'size'].item())
+        # df_data['percentage'] = (df_data['size']/total)*100
+        # return df_data
+
+
 
 if __name__ == "__main__":
     #reader = CSVReader('/home/arun/Projects/bingoarun/folmon/sample-data')
     ca = CoreAnalysis('/home/arun/Projects/bingoarun/folmon/sample-data')
-    print ca.getCurrentUsage()
+    # print ca.getCurrentUsage()
+    ca.getBetweenDates('2018-05-05','2018-05-08','/logs')
     

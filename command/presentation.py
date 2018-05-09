@@ -8,7 +8,6 @@ class Presentation:
         
     def getRecentStatus(self):
         df = self.ca.getCurrentUsage()
-        df['size'] = df['size']/(1024*1024)
         df = df.rename(columns={'size':'size(MB)'})
         df = df.round(3)
         output = StringIO()
@@ -17,8 +16,8 @@ class Presentation:
         pt = prettytable.from_csv(output)
         print pt
     
-    def getBetweenDates(self,start_date,end_date):
-        df = self.ca.getCurrentUsage()
+    def getBetweenDates(self,start_date,end_date,folder):
+        df = self.ca.getBetweenDates(start_date,end_date,folder)
         df['size'] = df['size']/(1024*1024)
         df = df.rename(columns={'size':'size(MB)'})
         df = df.round(3)
