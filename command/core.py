@@ -25,6 +25,9 @@ class CoreAnalysis:
         total=int(df_recent.loc[df_recent['folder'] == '/log','size'].item())
         df_recent['percentage'] = (df_recent['size']/total)*100
         return df_recent
+    
+    def getBetweenDates(self):
+        pass
 
 if __name__ == "__main__":
     #reader = CSVReader('/home/arun/Projects/bingoarun/folmon/sample-data')

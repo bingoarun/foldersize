@@ -16,6 +16,17 @@ class Presentation:
         output.seek(0)
         pt = prettytable.from_csv(output)
         print pt
+    
+    def getBetweenDates(self,start_date,end_date):
+        df = self.ca.getCurrentUsage()
+        df['size'] = df['size']/(1024*1024)
+        df = df.rename(columns={'size':'size(MB)'})
+        df = df.round(3)
+        output = StringIO()
+        df.to_csv(output)
+        output.seek(0)
+        pt = prettytable.from_csv(output)
+        print pt
 
         
 

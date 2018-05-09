@@ -32,9 +32,19 @@ def main():
 def status():
     presentation_obj.getRecentStatus()
 
+@click.command()
+@click.option('--start_date','-s',help='Start date in format yyyy-mm-dd')
+@click.option('--end_date','-e',help='End date in format yyyy-mm-dd')
+@click.option('--num_days','-n',type=int,help='Recent number of days')
+def diff(start_date,end_date,num_days):
+    if start_date != None and end_date != None :
+        presentation_obj.get
+
+
 
     
 main.add_command(status)
+main.add_command(diff)
 
 if __name__ == "__main__":
     main()
