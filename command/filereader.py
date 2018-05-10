@@ -35,7 +35,7 @@ class CSVReader:
                         print f
                         series = read_csv(f,
                                         names=['date','folder', 'size'],
-                                        header=0,
+                                        header=None,
                                         index_col=0,
                                         parse_dates=[0],
                                         )

@@ -29,6 +29,8 @@ class CoreAnalysis:
     
     def getBetweenDates(self,start_date,end_date,folder):
         df_data = self.reader.getBetweenDates(start_date,end_date)
+        print df_data
+        df_data = df_data.loc[df_data['folder'] == folder]
         min_df = ((df_data.loc[df_data.index.min()]).sort_values(['folder'],ascending=[True]))
         max_df = ((df_data.loc[df_data.index.max()]).sort_values(['folder'],ascending=[True]))
         df_diff = (min_df.merge(max_df.rename(columns={'size':end_date}),how='outer')).rename(columns={'size':start_date})
@@ -45,5 +47,5 @@ if __name__ == "__main__":
     #reader = CSVReader('/home/arun/Projects/bingoarun/folmon/sample-data')
     ca = CoreAnalysis('/home/arun/Projects/bingoarun/folmon/sample-data')
     # print ca.getCurrentUsage()
-    ca.getBetweenDates('2018-05-05','2018-05-07','/logs')
+    ca.getBetweenDates('2018-05-05','2018-05-07','/logs/fruit')
     
