@@ -14,8 +14,8 @@ class CSVReader:
 
     def getBetweenDates(self, start_date, end_date):
         all_files = glob.glob(os.path.join(self.path,"*"))
-        start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
-        end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d').date()
+        start_date = datetime.datetime.strptime(str(start_date), '%Y-%m-%d').date()
+        end_date = datetime.datetime.strptime(str(end_date), '%Y-%m-%d').date()
         list_ = []
         series = None
         for f in all_files:
@@ -54,7 +54,10 @@ class CSVReader:
     
     def getRecent(self):
         #FIXME: might not work if the user execute in 00.00 to 00:15 hours
-        start_date = end_date = datetime.date.today()
+        #For testing
+        start_date=datetime.datetime.strptime('2018-05-10', '%Y-%m-%d').date()
+        end_date=datetime.datetime.strptime('2018-05-10', '%Y-%m-%d').date()
+        #start_date = end_date = datetime.date.today()
         today_df = self.getBetweenDates(start_date, end_date)
         return today_df.loc[today_df.index.max()]
 
