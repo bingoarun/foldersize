@@ -32,7 +32,7 @@ class CSVReader:
                                         compression='gzip'
                                         )
                     else:
-                        print f
+                        #print f
                         series = read_csv(f,
                                         names=['date','folder', 'size'],
                                         header=None,
