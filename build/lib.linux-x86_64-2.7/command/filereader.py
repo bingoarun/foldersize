@@ -14,6 +14,8 @@ class CSVReader:
 
     def getBetweenDates(self, start_date, end_date):
         all_files = glob.glob(os.path.join(self.path,"*"))
+        start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+        end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d').date()
         list_ = []
         series = None
         for f in all_files:
@@ -24,16 +26,16 @@ class CSVReader:
                     if 'gz' in f:
                         series = read_csv(f,
                                         names=['date','folder', 'size'],
-                                        header=0,
+                                        header=None,
                                         index_col=0,
                                         parse_dates=[0],
                                         compression='gzip'
                                         )
                     else:
-                        print f
+                        #print f
                         series = read_csv(f,
                                         names=['date','folder', 'size'],
-                                        header=0,
+                                        header=None,
                                         index_col=0,
                                         parse_dates=[0],
                                         )
