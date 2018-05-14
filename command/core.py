@@ -32,7 +32,9 @@ class CoreAnalysis:
         df_data = df_data.loc[df_data['folder'].str.contains(folder)]
         #print df_data
         min_df = ((df_data.loc[df_data.index.min()]).sort_values(['folder'],ascending=[True]))
+        min_df['size'] = min_df['size']/(1024*1024)
         max_df = ((df_data.loc[df_data.index.max()]).sort_values(['folder'],ascending=[True]))
+        max_df['size'] = max_df['size']/(1024*1024)
         df_diff = (min_df.merge(max_df.rename(columns={'size':end_date}),how='outer')).rename(columns={'size':start_date})
         df_diff['percentage_increase'] = (df_diff[end_date] - df_diff[start_date])/df_diff[start_date] * 100
         #total=int(df_data.loc[df_data['folder'] == folder,'size'].item())

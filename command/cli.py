@@ -36,9 +36,10 @@ def status():
 @click.option('--start_date','-s',help='Start date in format yyyy-mm-dd')
 @click.option('--end_date','-e',help='End date in format yyyy-mm-dd')
 @click.option('--num_days','-n',type=int,help='Recent number of days')
-def diff(start_date,end_date,num_days):
+@click.option('--folder','-f',type=str,help='Absolute folder path')
+def diff(start_date,end_date,num_days,folder):
     if start_date != None and end_date != None :
-        presentation_obj.get
+        presentation_obj.getBetweenDates(start_date,end_date,folder)
 
 
 
