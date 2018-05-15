@@ -59,7 +59,7 @@ Add the following entry in cron where '/myfolder' is the folder you want to star
 ```
 
 #### Install the cli agent
-(If you don't want to install the CLI agent, you can follow the next step)
+(If you don't want to install the CLI agent, you can skip this and follow the next step)
 ```
 $ pip install folmon
 ```
