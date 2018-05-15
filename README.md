@@ -51,7 +51,9 @@ $ folmon diff -s 2018-05-05 -e 2018-05-10 -f /log/
 
 #### Setup collection script
 
-Add the following entry in cron where '/myfolder' is the folder you want to start monitoring. 
+Download the collection script (https://github.com/bingoarun/folmon/blob/master/collect/collect.py) and place it under specific folder (i.e /etc/sizemonitor/collect.py ) 
+
+Add the following entry in cron where '/myfolder' is the folder you want to start monitoring and '/etc/sizemonitor/collect.py' is the location of the downloaded collection script.
 ```
 */15 * * * * python /etc/sizemonitor/collect.py /myfolder >> /var/usage/usage-`date +"\%Y-\%m-\%d"`.csv | /usr/bin/logger -t sizemonitor
 ```
