@@ -1,5 +1,5 @@
 # folmon
-WIP : A simple tool to monitor folder and sub-folder sizes over time. It is ideal for setting up in a remote server environment where you can't have any time-series DB or can't install any agents (or daemons) to monitor a particular folder, as the collection script in this tool uses cron and doesn't run anything in the background.
+WIP : A simple tool to monitor folder and sub-folder sizes over time. It is ideal for setting up in a remote server environment where you can't have any time-series DB or can't install any agents (or daemons) to monitor a particular folder, as the collection script in this tool uses cron and doesn't run any long running processes in the background.
 
 ## Usage
 
@@ -57,6 +57,7 @@ Add the following entry in cron where '/myfolder' is the folder you want to star
 ```
 */15 * * * * python /etc/sizemonitor/collect.py /myfolder >> /var/usage/usage-`date +"\%Y-\%m-\%d"`.csv | /usr/bin/logger -t sizemonitor
 ```
+By default the usage data is saved under folder /var/usage. It will be made configurable in the future releases. 
 
 #### Install the cli agent
 (If you don't want to install the CLI agent, you can skip this and follow the next step)
